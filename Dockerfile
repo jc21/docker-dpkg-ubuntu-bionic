@@ -5,11 +5,14 @@ LABEL maintainer="Jamie Curnow <jc@jc21.com>"
 
 USER root
 
-RUN apt-get install -y golang-1.13
+RUN wget https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz -O /tmp/go.tgz \
+  && cd /tmp \
+  && tar -xzf go.tgz \
+  && mv go /usr/local \
+  && rm -f go.tgz
 
 USER builder
 
-# installed in /usr/lib/go-1.13
-ENV GOROOT=/usr/lib/go-1.13
+ENV GOROOT=/usr/local/go
 ENV GOPATH=/home/builder/go
-ENV PATH="/usr/lib/go-1.13/bin:/home/builder/go/bin:${PATH}"
+ENV PATH="/usr/local/go/bin:/home/builder/go/bin:${PATH}"
