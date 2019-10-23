@@ -7,8 +7,8 @@ pipeline {
   environment {
     IMAGE      = "dpkg-ubuntu"
     TEMP_IMAGE = "${IMAGE}_${BUILD_NUMBER}"
-    TAG        = "18.04"
-    TAG2       = "bionic"
+    TAG        = "18.04-rust"
+    TAG2       = "bionic-rust"
   }
   stages {
     stage('Build') {
@@ -41,8 +41,6 @@ pipeline {
   }
   post {
     success {
-      //build job: 'Docker/docker-dpkg-ubuntu-bionic/golang', wait: false
-      //build job: 'Docker/docker-dpkg-ubuntu-bionic/rust', wait: false
       juxtapose event: 'success'
       sh 'figlet "SUCCESS"'
     }
