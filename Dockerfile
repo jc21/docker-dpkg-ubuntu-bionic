@@ -5,7 +5,7 @@ LABEL maintainer="Jamie Curnow <jc@jc21.com>"
 
 USER root
 
-RUN wget https://dl.google.com/go/go1.13.4.linux-amd64.tar.gz -O /tmp/go.tgz \
+RUN wget https://dl.google.com/go/go1.13.5.linux-amd64.tar.gz -O /tmp/go.tgz \
   && cd /tmp \
   && tar -xzf go.tgz \
   && mv go /usr/local \
